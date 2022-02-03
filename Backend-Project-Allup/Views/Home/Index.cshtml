@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<Slider>
 @{
     ViewData["Title"] = "Index";
 }
@@ -7,9 +7,7 @@
 
 <section class="slider-area slider-active">
     <div class="single-slider">
-        <div class="slider-image">
-            <img src="~/assets/images/slider-1.jpg" alt="slider">
-        </div>
+       
         <div class="slider-content-wrapper">
             <div class="container-fluid custom-container">
                 <div class="slider-content">
@@ -22,9 +20,10 @@
         </div>
     </div> <!-- single slider -->
     <div class="single-slider">
-        <div class="slider-image">
-            <img src="~/assets/images/slider-2.jpg" alt="slider">
-        </div>
+        @foreach (var item in Model)
+        {
+        <div ><img src="~/assets/images/@item.ImageUrl" alt="slider"></div>
+        }
         <div class="slider-content-wrapper">
             <div class="container-fluid custom-container">
                 <div class="slider-content">
@@ -2466,7 +2465,7 @@
 <!--====== Blog Part Ends ======-->
 <!--====== Testimonial Part Start ======-->
 
-<section class="testimonial-area bg_cover pt-100 pb-100" style="background-image: url(assets/images/bg_testimonial.jpg);">
+<section class="testimonial-area bg_cover pt-100 pb-100" style="background-image: url(~/assets/images/bg_testimonial.jpg);">
     <div class="container">
         <div class="row">
             <div class="col-lg-10">
@@ -2510,7 +2509,7 @@
 <!--====== Testimonial Part Ends ======-->
 <!--====== Newsletter Part Start ======-->
 
-<section class="newsletter-area pt-100 pb-100 bg_cover" style="background-image: url(assets/images/bg-newletter.jpg)">
+<section class="newsletter-area pt-100 pb-100 bg_cover" style="background-image: url(~/assets/images/bg-newletter.jpg)">
     <div class="container">
         <div class="row justify-content-end">
             <div class="col-lg-8">
