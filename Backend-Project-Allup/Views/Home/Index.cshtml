@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Slider>
+﻿@model HomeVM
 @{
     ViewData["Title"] = "Index";
 }
@@ -6,35 +6,25 @@
 <!--====== Slider Part Start ======-->
 
 <section class="slider-area slider-active">
-    <div class="single-slider">
-       
-        <div class="slider-content-wrapper">
-            <div class="container-fluid custom-container">
-                <div class="slider-content">
-                    <h4 data-animation="fadeInDown" data-delay="0.5s" class="sub-title">Save $120 when you buy</h4>
-                    <h1 data-animation="fadeInLeft" data-delay="0.5s" class="main-title "><span>2020 Virtual Reality </span> Fulldive VR.</h1>
-                    <p data-animation="fadeInRightBig" data-delay="0.5s">Explore and immerse in exciting 360 content with Fulldive’s all-in-one virtual reality platform</p>
-                    <a data-animation="zoomIn" data-delay="0.5s" class="main-btn " href="single-product.html">Shop Now</a>
-                </div>
-            </div> <!-- container -->
-        </div>
-    </div> <!-- single slider -->
-    <div class="single-slider">
-        @foreach (var item in Model)
+   
+  
+        @foreach (var item in Model.Sliders)
         {
-        <div ><img src="~/assets/images/@item.ImageUrl" alt="slider"></div>
-        }
-        <div class="slider-content-wrapper">
-            <div class="container-fluid custom-container">
-                <div class="slider-content">
-                    <h4 data-animation="fadeInDown" data-delay="0.5s" class="sub-title">Save $120 when you buy</h4>
-                    <h1 data-animation="fadeInLeft" data-delay="0.5s" class="main-title "><span>4K HDR Smart TV 43 </span> Sony Bravia.</h1>
-                    <p data-animation="fadeInRightBig" data-delay="0.5s">Explore and immerse in exciting 360 content with Fulldive’s all-in-one virtual reality platform</p>
-                    <a data-animation="zoomIn" data-delay="0.5s" class="main-btn " href="single-product.html">Shop Now</a>
+            <div class="single-slider">
+                <div><img src="~/assets/images/@item.ImageUrl" alt="slider"></div>
+                <div class="slider-content-wrapper">
+                    <div class="container-fluid custom-container">
+                        <div class="slider-content">
+                            <h4 data-animation="fadeInDown" data-delay="0.5s" class="sub-title">@Model.SliderDesc.SubTitle</h4>
+                            <h1 data-animation="fadeInLeft" data-delay="0.5s" class="main-title ">@Html.Raw(Model.SliderDesc.MainTitle)</h1>
+                            <p data-animation="fadeInRightBig" data-delay="0.5s">@Model.SliderDesc.Desc</p>
+                            <a data-animation="zoomIn" data-delay="0.5s" class="main-btn " href="single-product.html">Shop Now</a>
+                        </div>
+                    </div> <!-- container -->
                 </div>
-            </div> <!-- container -->
-        </div>
-    </div> <!-- single slider -->
+            </div> <!-- single slider -->
+        }
+      
 </section>
 
 <!--====== Slider Part Ends ======-->
@@ -2465,7 +2455,7 @@
 <!--====== Blog Part Ends ======-->
 <!--====== Testimonial Part Start ======-->
 
-<section class="testimonial-area bg_cover pt-100 pb-100" style="background-image: url(~/assets/images/bg_testimonial.jpg);">
+<section class="testimonial-area bg_cover pt-100 pb-100" style="background-image: url(/assets/images/bg_testimonial.jpg);">
     <div class="container">
         <div class="row">
             <div class="col-lg-10">
@@ -2509,7 +2499,7 @@
 <!--====== Testimonial Part Ends ======-->
 <!--====== Newsletter Part Start ======-->
 
-<section class="newsletter-area pt-100 pb-100 bg_cover" style="background-image: url(~/assets/images/bg-newletter.jpg)">
+<section class="newsletter-area pt-100 pb-100 bg_cover" style="background-image: url(/assets/images/bg-newletter.jpg)">
     <div class="container">
         <div class="row justify-content-end">
             <div class="col-lg-8">

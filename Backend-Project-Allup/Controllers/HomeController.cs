@@ -1,5 +1,6 @@
 ﻿using Backend_Project_Allup.DAL;
 using Backend_Project_Allup.Models;
+using Backend_Project_Allup.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,11 @@ namespace Backend_Project_Allup.Controllers
         public IActionResult Index()
         {
             List<Slider> sliders = _context.Sliders.ToList();
-            return View(sliders);
+            SliderDesc sliderDesc = _context.SliderDescs.FirstOrDefault();
+            HomeVM homeVm = new HomeVM();
+            homeVm.Sliders = sliders;
+            homeVm.SliderDesc = sliderDesc;
+            return View(homeVm);
         }
     }
 }
