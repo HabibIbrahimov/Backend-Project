@@ -48,6 +48,10 @@ namespace Backend_Project_Allup
                 //    await context.Response.WriteAsync("Hello World!");
                 //});
                 endpoints.MapControllerRoute(
+                "areas",
+                "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}"
+                );
+                endpoints.MapControllerRoute(
                     "default",
                     "{controller=home}/{action=Index}/{id?}"
                     );
