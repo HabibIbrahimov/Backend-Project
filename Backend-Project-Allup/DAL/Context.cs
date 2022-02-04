@@ -18,5 +18,6 @@ namespace Backend_Project_Allup.DAL
         public DbSet<Banner> Banners { get; set; }
         public DbSet<BrandSlider> BrandSliders { get; set; }
         public DbSet<Blog> Blogs { get; set; }
+        public DbSet<Subscribe> Subscribes { get; set; }
     }
 }
