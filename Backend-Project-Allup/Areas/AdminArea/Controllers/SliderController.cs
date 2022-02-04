@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -63,6 +64,30 @@ namespace Backend_Project_Allup.Areas.AdminArea.Controllers
 
             return RedirectToAction("Index");
         }
+        public async Task<IActionResult> Remove(int? id)
+        {
+            if (id == null) return NotFound();
+            Slider dbSlider = await _context.Sliders.FindAsync(id);
+            if (dbSlider == null) return NotFound();
+            return View(dbSlider);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ActionName("Remove")]
+        public async Task<IActionResult> RemoveSlider(int? id)
+        {
+            if (id == null) return NotFound();
+            Slider dbSlider = await _context.Sliders.FindAsync(id);
+            if (dbSlider == null) return NotFound();
 
+            string path = Path.Combine(_env.WebRootPath, "assets/images", dbSlider.ImageUrl);
+            if (System.IO.File.Exists(path))
+            {
+                System.IO.File.Delete(path);
+            }
+            _context.Sliders.Remove(dbSlider);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
