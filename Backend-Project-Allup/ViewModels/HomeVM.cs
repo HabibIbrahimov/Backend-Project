@@ -11,5 +11,6 @@ namespace Backend_Project_Allup.ViewModels
         public List<Slider> Sliders { get; set; }
         public SliderDesc SliderDesc { get; set; }
         public List<Banner> Banners { get; set; }
+        public List<BrandSlider> BrandSliders { get; set; }
     }
 }
