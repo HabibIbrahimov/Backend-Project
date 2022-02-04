@@ -6,46 +6,52 @@
 <!--====== Slider Part Start ======-->
 
 <section class="slider-area slider-active">
-   
-  
-        @foreach (var item in Model.Sliders)
-        {
-            <div class="single-slider">
-                <div><img src="~/assets/images/@item.ImageUrl" alt="slider"></div>
-                <div class="slider-content-wrapper">
-                    <div class="container-fluid custom-container">
-                        <div class="slider-content">
-                            <h4 data-animation="fadeInDown" data-delay="0.5s" class="sub-title">@Model.SliderDesc.SubTitle</h4>
-                            <h1 data-animation="fadeInLeft" data-delay="0.5s" class="main-title ">@Html.Raw(Model.SliderDesc.MainTitle)</h1>
-                            <p data-animation="fadeInRightBig" data-delay="0.5s">@Model.SliderDesc.Desc</p>
-                            <a data-animation="zoomIn" data-delay="0.5s" class="main-btn " href="single-product.html">Shop Now</a>
-                        </div>
-                    </div> <!-- container -->
-                </div>
-            </div> <!-- single slider -->
-        }
-      
+
+
+    @foreach (var item in Model.Sliders)
+    {
+        <div class="single-slider">
+            <div><img src="~/assets/images/@item.ImageUrl" alt="slider"></div>
+            <div class="slider-content-wrapper">
+                <div class="container-fluid custom-container">
+                    <div class="slider-content">
+                        <h4 data-animation="fadeInDown" data-delay="0.5s" class="sub-title">@Model.SliderDesc.SubTitle</h4>
+                        <h1 data-animation="fadeInLeft" data-delay="0.5s" class="main-title ">@Html.Raw(Model.SliderDesc.MainTitle)</h1>
+                        <p data-animation="fadeInRightBig" data-delay="0.5s">@Model.SliderDesc.Desc</p>
+                        <a data-animation="zoomIn" data-delay="0.5s" class="main-btn " href="single-product.html">Shop Now</a>
+                    </div>
+                </div> <!-- container -->
+            </div>
+        </div> <!-- single slider -->
+    }
+
 </section>
 
 <!--====== Slider Part Ends ======-->
 <!--====== Banner Part Start ======-->
 
-<div class="banner-area banner-bg">
-    <div class="container-fluid custom-container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="banner-image">
-                    <a href="shop-4-column.html"><img src="~/assets/images/banner-1.png" alt="banner"></a>
-                </div> <!-- banner image -->
-            </div>
-            <div class="col-md-6">
-                <div class="banner-image">
-                    <a href="shop-4-column.html"><img src="~/assets/images/banner-2.png" alt="banner"></a>
-                </div> <!-- banner image -->
-            </div>
-        </div> <!-- row -->
-    </div> <!-- container -->
-</div>
+
+    <div class="banner-area banner-bg">
+        <div class="container-fluid custom-container">
+            <div class="row">
+                @foreach (var item in Model.Banners)
+                {
+                    <div class="col-md-6">
+                        <div class="banner-image">
+                            <a href="shop-4-column.html"><img src="assets/images/@item.ImageUrl" alt="banner"></a>
+                        </div> <!-- banner image -->
+                    </div>
+                    
+                }
+                </div> <!-- row -->
+        </div> <!-- container -->
+    </div>
+
+
+
+
+}
+
 
 <!--====== Banner Part Ends ======-->
 <!--====== Category Part Start ======-->

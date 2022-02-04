@@ -15,5 +15,6 @@ namespace Backend_Project_Allup.DAL
         }
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<SliderDesc> SliderDescs { get; set; }
+        public DbSet<Banner> Banners { get; set; }
     }
 }
