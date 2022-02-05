@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend_Project_Allup.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220205115357_AddBioTable")]
-    partial class AddBioTable
+    [Migration("20220205130305_addBioTable")]
+    partial class addBioTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,7 +42,16 @@ namespace Backend_Project_Allup.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("BackgroundUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmailUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("LogoUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PaymentUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

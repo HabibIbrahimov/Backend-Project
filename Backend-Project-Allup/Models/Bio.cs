@@ -9,6 +9,8 @@ namespace Backend_Project_Allup.Models
     {
         public int Id { get; set; }
         public string LogoUrl { get; set; }
-      
+        public string PaymentUrl { get; set; }
+        public string EmailUrl { get; set; }
+        public string BackgroundUrl { get; set; }
     }
 }

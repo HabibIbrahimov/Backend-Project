@@ -40,7 +40,16 @@ namespace Backend_Project_Allup.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("BackgroundUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmailUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("LogoUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PaymentUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
