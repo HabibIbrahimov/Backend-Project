@@ -1,0 +1,49 @@
+﻿@model RegisterVM
+@{
+    ViewData["Title"] = "Register";
+}
+
+<!--====== Register Part Start ======-->
+
+<section class="register-area pt-10">
+    <div class="container-fluid custom-container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="login-register-wrapper mt-30">
+                    <h4 class="allup-title">Creat New Account</h4>
+                    <p class="mt-10">Already have an account? <a asp-controller="Account"asp-action="Login">Log in instead!</a></p>
+                    <div class="alert alert-danger" asp-validation-summary="ModelOnly"></div>
+                    <form method="post">
+                        <div class="single-form">
+                            <input asp-for="FullName" placeholder="FullName">
+                            <span asp-validation-for="FullName" class="text text-danger"></span>
+                        </div>
+                      
+                        <div class="single-form">
+                            <input asp-for="Email" placeholder="Email Address">
+                            <span asp-validation-for="Email" class="text text-danger"></span>
+                        </div>
+                        <div class="single-form">
+                            <input asp-for="UserName" placeholder="UserName">
+                            <span asp-validation-for="UserName" class="text text-danger"></span>
+                        </div>
+                        <div class="single-form">
+                            <input asp-for="Password" placeholder="Password">
+                            <span asp-validation-for="Password" class="text text-danger"></span>
+                        </div>
+                        <div class="single-form">
+                            <input asp-for="ConfirmPassword" placeholder="Confirm Password">
+                            <span asp-validation-for="ConfirmPassword" class="text text-danger"></span>
+                        </div>
+                       
+                        <div class="single-form">
+                            <button class="main-btn main-btn-2">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--====== Register Part Ends ======-->
