@@ -21,6 +21,8 @@ namespace Backend_Project_Allup.DAL
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Subscribe> Subscribes { get; set; }
         public DbSet<Bio> Bios { get; set; }
-        
+        public DbSet<About> Abouts { get; set; }
+        public DbSet<AboutDesc> AboutDescs { get; set; }
+
     }
 }

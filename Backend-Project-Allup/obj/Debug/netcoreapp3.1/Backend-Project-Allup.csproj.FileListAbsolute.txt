@@ -168,3 +168,4 @@ B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\bin\Debug\netcoreapp3.1\M
 B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
 B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\Razor\Views\Account\ForgetPassword.cshtml.g.cs
 B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\Razor\Views\Account\ResetPassword.cshtml.g.cs
+B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\Razor\Views\About\Index.cshtml.g.cs
