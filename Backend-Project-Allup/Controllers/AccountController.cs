@@ -57,6 +57,47 @@ namespace Backend_Project_Allup.Controllers
         {
             return Content(User.Identity.IsAuthenticated.ToString());
         }
+        public IActionResult Login()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+
+        public async Task<IActionResult> Login(LoginVm login)
+        {
+            if (!ModelState.IsValid) return View();
+            AppUser dbUser = await _userManager.FindByNameAsync(login.UserName);
+            if (dbUser == null)
+            {
+                ModelState.AddModelError("", "UserName or Password invalid");
+                return View();
+            }
+
+            var signInResult = await _signInManager.PasswordSignInAsync(dbUser, login.Password, true, true);
+           
+            if (signInResult.IsLockedOut)
+            {
+                ModelState.AddModelError("", "is lockout");
+                return View();
+            }
+            if (!signInResult.Succeeded)
+            {
+                ModelState.AddModelError("", "UserName or Password invalid");
+                return View();
+            }
+
+           
+
+
+            return RedirectToAction("Index", "Home");
+        }
+
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
