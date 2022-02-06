@@ -48,9 +48,18 @@ namespace Backend_Project_Allup.Controllers
                 return View();
             };
             //await _userManager.AddToRoleAsync(user, "Member");
-            //await _signInManager.SignInAsync(user, true);
+            await _signInManager.SignInAsync(user, true);
 
 
+            return RedirectToAction("Index", "Home");
+        }
+        public IActionResult CheckSignIn()
+        {
+            return Content(User.Identity.IsAuthenticated.ToString());
+        }
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
 
