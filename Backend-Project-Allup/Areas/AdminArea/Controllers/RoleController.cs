@@ -1,4 +1,5 @@
 ﻿using Backend_Project_Allup.Models;
+using Backend_Project_Allup.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -45,6 +46,35 @@ namespace Backend_Project_Allup.Areas.AdminArea.Controllers
             }
 
             return NotFound();
+        }
+        public async Task<IActionResult> Update(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            UpdateRoleVM updateUserRole = new UpdateRoleVM
+            {
+                User = user,
+                Userid = user.Id,
+                Roles = _roleManager.Roles.ToList(),
+                UserRoles = await _userManager.GetRolesAsync(user)
+
+            };
+            return View(updateUserRole);
+        }
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> Update(string id, List<string> roles)
+        {
+
+            var user = await _userManager.FindByIdAsync(id);
+            var dbRoles = _roleManager.Roles.ToList();
+            var userRoles = await _userManager.GetRolesAsync(user);
+
+            var addedRole = roles.Except(userRoles);
+            var removedRole = userRoles.Except(roles);
+            await _userManager.AddToRolesAsync(user, addedRole);
+            await _userManager.RemoveFromRolesAsync(user, removedRole);
+
+            return RedirectToAction("index");
         }
     }
 }
