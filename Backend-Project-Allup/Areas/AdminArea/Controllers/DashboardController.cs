@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Backend_Project_Allup.Areas.AdminArea.Controllers
 {
     [Area("AdminArea")]
-    [Authorize]
+   
     public class DashboardController : Controller
     {
         public IActionResult Index()

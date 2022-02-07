@@ -15,31 +15,48 @@
             <p class="card-description">
                 <a class="btn btn-primary" asp-controller="User" asp-action="Register"> User Create </a>
             </p>
-            <div class="table-responsive">
+            <div class="table-responsive" style="width:700px">
                 <table class="table">
                     <thead>
                         <tr>
                             <th>FullName</th>
                             <th>Email</th>
                             <th>UserName</th>
+                            <th>Active</th>
                             <th>Settings</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td>@item.FullName</td>
-                                <td>@item.Email</td>
-                                <td>@item.UserName</td>
-                                <td>
-                                    <a asp-controller="User" asp-action="Update" asp-route-id="" class="btn btn-warning"><i class="mdi mdi-table-edit"></i></a>
-                                    <a asp-controller="User" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-info"><i class="mdi mdi-account-card-details"></i></a>
-                                    <a asp-controller="User" asp-action="Remove" asp-route-id="" class="btn btn-danger"><i class="mdi mdi-account-remove"></i></a>
-                                    <a asp-controller="Role" asp-action="Update" asp-route-id="@item.Id" class="btn btn-warning">ChgRole</a>
+                        <tr>
+                            <td>@item.FullName</td>
+                            <td>@item.Email</td>
+                            <td>@item.UserName</td>
+                            @if (User.Identity.Name == item.UserName)
+                            {
+                                <td>Stop!</td>
+                            }
+                            else
+                            {
+                                @if (item.IsActive)
+                                {
+                                    <td><a asp-controller="user" asp-action="IsActive" asp-route-id="@item.Id" class="btn btn-success">Active</a></td>
+                                }
+                                else
+                                {
+                                    <td><a asp-controller="user" asp-action="IsActive" asp-route-id="@item.Id" class="btn btn-danger">Deactive</a></td>
 
-                                </td>
-                            </tr>
+                                }
+                            }
+                            <td>
+                                <a asp-controller="User" asp-action="Update" asp-route-id="" class="btn btn-warning"><i class="mdi mdi-table-edit"></i></a>
+                                <a asp-controller="User" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-info"><i class="mdi mdi-account-card-details"></i></a>
+                                <a asp-controller="User" asp-action="Remove" asp-route-id="" class="btn btn-danger"><i class="mdi mdi-account-remove"></i></a>
+                                <a asp-controller="Role" asp-action="Update" asp-route-id="@item.Id" class="btn btn-warning">CRole</a>
+
+                            </td>
+                        </tr>
                         }
                     </tbody>
                 </table>

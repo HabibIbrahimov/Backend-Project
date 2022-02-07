@@ -84,7 +84,12 @@ namespace Backend_Project_Allup.Controllers
             }
 
             var signInResult = await _signInManager.PasswordSignInAsync(dbUser, login.Password, true, true);
-           
+            if (!dbUser.IsActive)
+            {
+                ModelState.AddModelError("", "user is deactive");
+                return View();
+            }
+
             if (signInResult.IsLockedOut)
             {
                 ModelState.AddModelError("", "is lockout");

@@ -1,5 +1,7 @@
-﻿using Backend_Project_Allup.Models;
+﻿using Backend_Project_Allup.DAL;
+using Backend_Project_Allup.Models;
 using Backend_Project_Allup.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,22 +12,25 @@ using System.Threading.Tasks;
 namespace Backend_Project_Allup.Areas.AdminArea.Controllers
 {
     [Area("AdminArea")]
+    [Authorize(Roles="Admin")]
     public class UserController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly Context _context;
         public UserController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager,
-            RoleManager<IdentityRole> roleManager)
+            RoleManager<IdentityRole> roleManager,Context context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
+            _context = context;
         }
         public async Task<IActionResult> Index(string name)
         {
             var users = name == null ? _userManager.Users.ToList() :
-                _userManager.Users.Where(u => u.FullName.ToLower().Contains(name.ToLower())).ToList();
+                 _userManager.Users.Where(u => u.FullName.ToLower().Contains(name.ToLower())).ToList();
             //List<UserReturnVM> userReturnVM = new List<UserReturnVM>();
             //foreach (var user in users)
             //{
@@ -71,6 +76,26 @@ namespace Backend_Project_Allup.Areas.AdminArea.Controllers
             await _signInManager.SignInAsync(user, true);
 
             return RedirectToAction("Index", "Home");
+        }
+        public async Task<IActionResult> IsActive(string id)
+        {
+            AppUser user = await _userManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            if (user.IsActive)
+            {
+                user.IsActive = false;
+            }
+            else
+            {
+                user.IsActive = true;
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+
         }
     }
 }
