@@ -24,6 +24,8 @@ namespace Backend_Project_Allup.Controllers
             List<BrandSlider> brandSliders = _context.BrandSliders.ToList();
             List<Blog> blogs = _context.Blogs.ToList();
             Subscribe subscribe = _context.Subscribes.FirstOrDefault();
+            List<Testimonial> testimonials = _context.Testimonials.ToList();
+            TestimonialDesc testimonialDesc = _context.TestimonialDescs.FirstOrDefault();
             HomeVM homeVm = new HomeVM();
             homeVm.Sliders = sliders;
             homeVm.SliderDesc = sliderDesc;
@@ -31,6 +33,8 @@ namespace Backend_Project_Allup.Controllers
             homeVm.BrandSliders = brandSliders;
             homeVm.Blogs = blogs;
             homeVm.Subscribe = subscribe;
+            homeVm.Testimonials = testimonials;
+            homeVm.TestimonialDesc = testimonialDesc;
             return View(homeVm);
         }
     }

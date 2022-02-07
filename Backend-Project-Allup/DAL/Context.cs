@@ -23,6 +23,8 @@ namespace Backend_Project_Allup.DAL
         public DbSet<Bio> Bios { get; set; }
         public DbSet<About> Abouts { get; set; }
         public DbSet<AboutDesc> AboutDescs { get; set; }
+        public DbSet<Testimonial> Testimonials { get; set; }
+        public DbSet<TestimonialDesc> TestimonialDescs { get; set; }
 
     }
 }
