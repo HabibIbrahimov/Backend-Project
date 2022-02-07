@@ -53,9 +53,9 @@ namespace Backend_Project_Allup
                 app.UseDeveloperExceptionPage();
             }
             app.UseStaticFiles();
-            app.UseAuthentication();
             app.UseRouting();
-
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 //endpoints.MapGet("/", async context =>

@@ -15,11 +15,13 @@ namespace Backend_Project_Allup.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
-
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+        private readonly RoleManager<IdentityRole> _roleManager;
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, 
+            RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
         }
         public IActionResult Register()
         {
@@ -49,7 +51,7 @@ namespace Backend_Project_Allup.Controllers
                 }
                 return View();
             };
-            //await _userManager.AddToRoleAsync(user, "Member");
+            await _userManager.AddToRoleAsync(user, "Member");
             await _signInManager.SignInAsync(user, true);
 
 
@@ -94,7 +96,11 @@ namespace Backend_Project_Allup.Controllers
                 return View();
             }
 
-           
+            var roles = await _userManager.GetRolesAsync(dbUser);
+            if (roles[0] == "Admin")
+            {
+                return RedirectToAction("Index", "Dashboard", new { area = "AdminArea" });
+            }
 
 
             return RedirectToAction("Index", "Home");
@@ -168,20 +174,21 @@ namespace Backend_Project_Allup.Controllers
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
         public IActionResult Index()
         {
             return View();
+        }
+
+        public async Task CreateRole()
+        {
+            if (!await _roleManager.RoleExistsAsync("Admin"))
+            {
+                await _roleManager.CreateAsync(new IdentityRole { Name = "Admin" });
+            }
+            if (!await _roleManager.RoleExistsAsync("Member"))
+            {
+                await _roleManager.CreateAsync(new IdentityRole { Name = "Member" });
+            }
         }
 
     }
