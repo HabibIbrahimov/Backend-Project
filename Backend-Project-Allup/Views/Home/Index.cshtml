@@ -2278,23 +2278,7 @@
 <!--====== Product Part Ends ======-->
 <!--====== Brand Part Start ======-->
 
-<div class="brand-area pt-80">
-    <div class="container-fluid custom-container">
-        <div class="row brand-active">
-            @foreach (var item in Model.BrandSliders)
-            {
-                <div class="col-lg-2">
-                    <div class="single-brand">
-                        <a href="#">
-                            <img src="~/assets/images/@item.ImageUrl" alt="brand">
-                        </a>
-                    </div> <!-- single brand -->
-                </div>
-            }
-        </div>
-
-    </div> <!-- row -->
-</div> <!-- container -->
+@await Component.InvokeAsync("BrandSlider")
 <!--====== Brand Part Ends ======-->
 
 @await Component.InvokeAsync("Service")
@@ -2358,24 +2342,6 @@
 <!--====== Testimonial Part Ends ======-->
 <!--====== Newsletter Part Start ======-->
 
-<section class="newsletter-area pt-100 pb-100 bg_cover" style="background-image: url(/assets/images/@Model.Subscribe.ImageUrl)">
-    <div class="container">
-        <div class="row justify-content-end">
-            <div class="col-lg-8">
-                <div class="newsletter-content">
-                    <h2 class="newsletter-title">@Model.Subscribe.Title</h2>
-                    <p>@Model.Subscribe.Desc</p>
-
-                    <div class="newsletter-forn">
-                        <form action="#">
-                            <input type="text" placeholder="Your Email address">
-                            <button class="main-btn">Subscribe</button>
-                        </form>
-                    </div>
-                </div> <!-- newsletter content -->
-            </div>
-        </div> <!-- row -->
-    </div> <!-- container -->
-</section>
+@await Component.InvokeAsync("Subscribe")
 
 <!--====== Newsletter Part Ends ======-->
