@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Backend_Project_Allup.Controllers
 {
-    [Area("Admin")]
+   
     public class ContactController : Controller
     {
         private readonly Context _context;
@@ -26,14 +26,14 @@ namespace Backend_Project_Allup.Controllers
         public async Task<IActionResult> Index()
         {
             Contact contact = _context.Contacts.FirstOrDefault();
-            ContactVM contactVm = new ContactVM();
+            ContactVM contactVM = new ContactVM();
             if (User.Identity.IsAuthenticated)
             {
-                contactVm.User = await _userManager.FindByIdAsync(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
+                contactVM.User = await _userManager.FindByIdAsync(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
             }
-            contactVm.Contact = contact;
-            return View(contactVm);
+            contactVM.Contact = contact;
+            return View(contactVM);
         }
 
         [HttpPost]
