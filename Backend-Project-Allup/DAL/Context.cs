@@ -28,6 +28,9 @@ namespace Backend_Project_Allup.DAL
         public DbSet<Service> Services { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Brand> Brands { get; set; }
+        public DbSet<CategoryBrand> CategoryBrands { get; set; }
 
     }
 }

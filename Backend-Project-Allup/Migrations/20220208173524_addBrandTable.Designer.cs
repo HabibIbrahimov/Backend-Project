@@ -4,14 +4,16 @@ using Backend_Project_Allup.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Backend_Project_Allup.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20220208173524_addBrandTable")]
+    partial class addBrandTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -253,28 +255,6 @@ namespace Backend_Project_Allup.Migrations
                     b.HasIndex("MainCategoryId");
 
                     b.ToTable("Categories");
-                });
-
-            modelBuilder.Entity("Backend_Project_Allup.Models.CategoryBrand", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("BrandId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BrandId");
-
-                    b.HasIndex("CategoryId");
-
-                    b.ToTable("CategoryBrands");
                 });
 
             modelBuilder.Entity("Backend_Project_Allup.Models.Contact", b =>
@@ -591,25 +571,6 @@ namespace Backend_Project_Allup.Migrations
                     b.Navigation("MainCategory");
                 });
 
-            modelBuilder.Entity("Backend_Project_Allup.Models.CategoryBrand", b =>
-                {
-                    b.HasOne("Backend_Project_Allup.Models.Brand", "Brand")
-                        .WithMany("CategoryBrand")
-                        .HasForeignKey("BrandId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Backend_Project_Allup.Models.Category", "Category")
-                        .WithMany("CategoryBrand")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Brand");
-
-                    b.Navigation("Category");
-                });
-
             modelBuilder.Entity("Backend_Project_Allup.Models.Message", b =>
                 {
                     b.HasOne("Backend_Project_Allup.Models.AppUser", "User")
@@ -670,15 +631,8 @@ namespace Backend_Project_Allup.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Backend_Project_Allup.Models.Brand", b =>
-                {
-                    b.Navigation("CategoryBrand");
-                });
-
             modelBuilder.Entity("Backend_Project_Allup.Models.Category", b =>
                 {
-                    b.Navigation("CategoryBrand");
-
                     b.Navigation("SubCategory");
                 });
 #pragma warning restore 612, 618
