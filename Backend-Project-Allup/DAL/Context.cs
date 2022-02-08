@@ -26,6 +26,8 @@ namespace Backend_Project_Allup.DAL
         public DbSet<Testimonial> Testimonials { get; set; }
         public DbSet<TestimonialDesc> TestimonialDescs { get; set; }
         public DbSet<Service> Services { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Message> Messages { get; set; }
 
     }
 }
