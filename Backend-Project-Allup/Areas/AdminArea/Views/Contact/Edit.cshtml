@@ -1,0 +1,60 @@
+﻿@model Backend_Project_Allup.Models.Contact
+
+@{
+    ViewData["Title"] = "Update";
+}
+
+<h1>Update</h1>
+
+<h4>ContactUS</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Text" class="control-label"></label>
+                <input asp-for="Text" class="form-control" />
+                <span asp-validation-for="Text" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MapUrl" class="control-label"></label>
+                <input asp-for="MapUrl" class="form-control" />
+                <span asp-validation-for="MapUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MobileNum" class="control-label"></label>
+                <input asp-for="MobileNum" class="form-control" />
+                <span asp-validation-for="MobileNum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HotlineNum" class="control-label"></label>
+                <input asp-for="HotlineNum" class="form-control" />
+                <span asp-validation-for="HotlineNum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SupportEmail" class="control-label"></label>
+                <input asp-for="SupportEmail" class="form-control" />
+                <span asp-validation-for="SupportEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

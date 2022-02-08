@@ -179,3 +179,8 @@ B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\R
 B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\BrandSlider\Default.cshtml.g.cs
 B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Subscribe\Default.cshtml.g.cs
 B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\Razor\Views\Contact\Index.cshtml.g.cs
+B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Contact\Index.cshtml.g.cs
+B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Contact\Details.cshtml.g.cs
+B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Contact\Create.cshtml.g.cs
+B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Contact\Edit.cshtml.g.cs
+B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Contact\Delete.cshtml.g.cs
