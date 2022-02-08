@@ -26,6 +26,7 @@ namespace Backend_Project_Allup.Controllers
             Subscribe subscribe = _context.Subscribes.FirstOrDefault();
             List<Testimonial> testimonials = _context.Testimonials.ToList();
             TestimonialDesc testimonialDesc = _context.TestimonialDescs.FirstOrDefault();
+            List<Service> services = _context.Services.ToList();
             HomeVM homeVm = new HomeVM();
             homeVm.Sliders = sliders;
             homeVm.SliderDesc = sliderDesc;
@@ -35,6 +36,7 @@ namespace Backend_Project_Allup.Controllers
             homeVm.Subscribe = subscribe;
             homeVm.Testimonials = testimonials;
             homeVm.TestimonialDesc = testimonialDesc;
+            homeVm.services = services;
             return View(homeVm);
         }
     }

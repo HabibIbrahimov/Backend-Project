@@ -16,5 +16,6 @@ namespace Backend_Project_Allup.ViewModels
         public Subscribe Subscribe { get; set; }
         public List<Testimonial> Testimonials { get; set; }
         public TestimonialDesc TestimonialDesc { get; set; }
+        public List<Service> services { get; set; }
     }
 }

@@ -135,7 +135,7 @@ namespace Backend_Project_Allup.Controllers
                 mail.From = new MailAddress("loremipsump125@gmail.com", "Reset");
                 mail.To.Add(user.Email);
                 mail.Subject = "Reset Password";
-                mail.Body = $"<async href={ link}>Go to Reset Password View</a>";
+                mail.Body = $"<a href={ link}>Go to Reset Password View</a>";
                 mail.IsBodyHtml = true;
                 using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
                 {
@@ -169,7 +169,7 @@ namespace Backend_Project_Allup.Controllers
                 Token = model.Token,
                 User = user
             };
-            if (!ModelState.IsValid) return View(forgetPassword);
+            //if (!ModelState.IsValid) return View(forgetPassword);
             IdentityResult result = await _userManager.ResetPasswordAsync(user, model.Token, model.Password);
             foreach (var item in result.Errors)
             {

@@ -51,6 +51,9 @@ namespace Backend_Project_Allup.Areas.AdminArea.Controllers
             userRoleVm.Roles = await _userManager.GetRolesAsync(user);
             return View(userRoleVm);
         }
+
+     
+
         public async Task<IActionResult> Register(RegisterVM register)
         {
             if (!ModelState.IsValid) return View();
