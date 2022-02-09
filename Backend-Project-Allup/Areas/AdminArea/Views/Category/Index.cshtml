@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Backend_Project_Allup.Models.Category>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-secondary">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsMain)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsFeature)
+            </th>
+            <th>
+                MainCategory
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsMain)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsFeature)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MainCategory.Name)
+                </td>
+                @if (item.IsDeleted == false)
+                {
+                    <td>
+                        <a asp-action="Edit" class="btn btn-outline-success" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" class="btn btn-outline-info" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" class="btn btn-outline-danger" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <a asp-action="Active" class="btn btn-danger" asp-route-id="@item.Id">Active</a>
+                    </td>
+
+                }
+
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -187,3 +187,8 @@ B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\R
 B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Message\Index.cshtml.g.cs
 B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Message\Details.cshtml.g.cs
 B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Message\Delete.cshtml.g.cs
+B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Category\Index.cshtml.g.cs
+B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Category\Details.cshtml.g.cs
+B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Category\Create.cshtml.g.cs
+B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Category\Edit.cshtml.g.cs
+B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Category\Delete.cshtml.g.cs

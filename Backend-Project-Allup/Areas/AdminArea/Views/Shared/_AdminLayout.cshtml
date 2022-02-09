@@ -63,15 +63,15 @@
                 </ul>
                 <ul class="navbar-nav navbar-nav-right">
                     <li class="nav-item dropdown mr-1">
-                        <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown"  data-toggle="dropdown">
+                        <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" data-toggle="dropdown">
                             <i class="mdi mdi-message-text mx-0"></i>
                             <span class="count"></span>
                         </a>
-                        <div  class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="messageDropdown">
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="messageDropdown">
                             <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
-                            
-                            
-                            
+
+
+
                         </div>
                     </li>
                     <li class="nav-item dropdown mr-4">
@@ -150,12 +150,12 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a asp-controller="Dashboard" asp-action="Index" class="nav-link" data-toggle="collapse" aria-expanded="false" aria-controls="ui-basic">
+                        <a asp-controller="Dashboard" asp-action="Index" class="nav-link">
                             Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a asp-controller="Category" asp-action="Index" class="nav-link" data-toggle="collapse" aria-expanded="false" aria-controls="ui-basic">
+                        <a asp-controller="Category" asp-action="Index" class="nav-link">
                             Categories
                         </a>
 
@@ -286,6 +286,7 @@
     <script src="~/assets/js/main.js"></script>
     @RenderSection("Scripts", false)
     @RenderSection("Css", false)
+    @RenderSection("CategoryScript", false)
 </body>
 
 </html>
