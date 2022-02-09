@@ -1,5 +1,6 @@
 ﻿using Backend_Project_Allup.Models;
 using Backend_Project_Allup.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -23,12 +24,14 @@ namespace Backend_Project_Allup.Controllers
             _signInManager = signInManager;
             _roleManager = roleManager;
         }
+        [AllowAnonymous]
         public IActionResult Register()
         {
             return View();
         }
         [HttpPost]
         [AutoValidateAntiforgeryToken]
+        [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterVM register)
         {
             if (!ModelState.IsValid) return View();
@@ -61,6 +64,7 @@ namespace Backend_Project_Allup.Controllers
         {
             return Content(User.Identity.IsAuthenticated.ToString());
         }
+        [AllowAnonymous]
         public IActionResult Login()
         {
             if (User.Identity.IsAuthenticated)
@@ -72,6 +76,7 @@ namespace Backend_Project_Allup.Controllers
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
+        [AllowAnonymous]
 
         public async Task<IActionResult> Login(LoginVm login)
         {
@@ -196,5 +201,43 @@ namespace Backend_Project_Allup.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(ChangePasswordVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.GetUserAsync(User);
+                if (user == null)
+                {
+                    return RedirectToAction("Login");
+                }
+
+                // ChangePasswordAsync changes the user password
+                var result = await _userManager.ChangePasswordAsync(user,
+                    model.CurrentPassword, model.NewPassword);
+
+                
+                if (!result.Succeeded)
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                    return View();
+                }
+
+                // Upon successfully changing the password refresh sign-in cookie
+                await _signInManager.RefreshSignInAsync(user);
+                return View("ChangePasswordConfirmation");
+            }
+
+            return View(model);
+        }
     }
 }
