@@ -197,3 +197,5 @@ B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\R
 B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\About\Index.cshtml.g.cs
 B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\About\Details.cshtml.g.cs
 B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\About\Edit.cshtml.g.cs
+B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Brand\Index.cshtml.g.cs
+B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Brand\Create.cshtml.g.cs
