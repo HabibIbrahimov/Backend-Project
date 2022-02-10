@@ -60,23 +60,34 @@ namespace Backend_Project_Allup.Areas.AdminArea.Controllers
             }
             return NotFound();
         }
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int? id)
         {
-            return View();
+            Brand _brand = await _context.Brands.FirstOrDefaultAsync(x => x.Id == id);
+            if (_brand == null) return RedirectToAction("Delete");
+            return View(_brand);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<ActionResult> Delete(Brand brand)
         {
-            try
+            Brand _brand = await _context.Brands.FirstOrDefaultAsync(x => x.Id == brand.Id);
+            if (brand == null) return RedirectToAction("Delete");
+
+
+            List<CategoryBrand> categoryBrand = await _context.CategoryBrands.ToListAsync();
+            foreach (var item in categoryBrand)
             {
-                return RedirectToAction(nameof(Index));
+
+                _context.CategoryBrands.Remove(item);
+                await _context.SaveChangesAsync();
+
+
             }
-            catch
-            {
-                return View();
-            }
+            _context.Brands.Remove(_brand);
+            await _context.SaveChangesAsync();
+
+            return View();
         }
     }
 }
