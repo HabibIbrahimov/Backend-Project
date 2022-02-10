@@ -1,5 +1,6 @@
 ﻿using Backend_Project_Allup.DAL;
 using Backend_Project_Allup.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -58,6 +59,24 @@ namespace Backend_Project_Allup.Areas.AdminArea.Controllers
                 return RedirectToAction("Index");
             }
             return NotFound();
+        }
+        public ActionResult Delete(int id)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, IFormCollection collection)
+        {
+            try
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }
