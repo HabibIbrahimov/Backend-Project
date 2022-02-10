@@ -1,17 +1,12 @@
-﻿
-@{
-    ViewData["Title"] = "Index";
-}
-
-@model IEnumerable<Backend_Project_Allup.Models.Message>
+﻿@model IEnumerable<Backend_Project_Allup.Models.Message>
 
 @{
     ViewData["Title"] = "Index";
 }
-
+<link href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css" rel="stylesheet" />
 <h1>Index</h1>
 
-<table class="table">
+<table class="display" id="message">
     <thead>
         <tr>
             <th>
