@@ -3,11 +3,13 @@
 @{
     ViewData["Title"] = "Index";
 }
+<link href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css" rel="stylesheet" /> 
 
 <p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p> 
+<br />
+<table class="display" id="message">
     <thead>
         <tr>
             <th>
@@ -65,7 +67,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Campaign.Discount)%
                 </td>
-                <td>
+                <td style="width:auto">
                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-warning">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>

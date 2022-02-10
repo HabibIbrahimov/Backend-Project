@@ -3,6 +3,7 @@ using Backend_Project_Allup.Models;
 using Backend_Project_Allup.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,9 @@ namespace Backend_Project_Allup.Controllers
             List<TestimonialDesc> testimonialDescs = _context.TestimonialDescs.ToList();
             List<Service> services = _context.Services.ToList();
             List<Category> categories = _context.Categories.Where(c => c.IsMain == true).ToList();
+            List<Product> products = _context.Products.Include(p => p.Campaign).Include(p => p.productPhotos).Include(p => p.Brand).ToList();
             HomeVM homeVm = new HomeVM();
+            ViewBag.newarrive = products.OrderByDescending(p => p.Id).Take(14).ToList();
             homeVm.Sliders = sliders;
             homeVm.SliderDesc = sliderDesc;
             homeVm.Banners = banners;
@@ -41,6 +44,7 @@ namespace Backend_Project_Allup.Controllers
             homeVm.TestimonialDesc = testimonialDescs;
             homeVm.services = services;
             homeVm.Categories = categories;
+            homeVm.products = products;
             ViewBag.FeatCategories = categories.Where(c => c.IsFeature == true);
             return View(homeVm);
         }

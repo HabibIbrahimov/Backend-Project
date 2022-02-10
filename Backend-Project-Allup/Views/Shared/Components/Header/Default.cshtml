@@ -185,11 +185,10 @@
                             <div class="header-cart">
                                 <div class="cart-btn">
                                     <a asp-controller="basket" asp-action="ShowBasket">
-                                        <sup class="rounded-circle">@ViewBag.ProductQuantity</sup>
                                         <i class="icon ion-bag"></i>
                                         <span class="text">Cart :</span>
                                         <span class="total">$0.00</span>
-                                        <span class="count">0</span>
+                                        <span class="count">@ViewBag.ProductCount</span>
                                     </a>
                                 </div>
                                 

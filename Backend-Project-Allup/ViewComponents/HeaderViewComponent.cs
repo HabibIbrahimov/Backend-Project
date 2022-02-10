@@ -2,6 +2,7 @@
 using Backend_Project_Allup.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,16 @@ namespace Backend_Project_Allup.ViewComponents
                 AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
                 ViewBag.UserName = user.FullName;
             };
+
+            ViewBag.ProductCount = 0;
+            if (Request.Cookies["basket"] != null)
+            {
+                int total = 0;
+                List<BasketProduct> products = JsonConvert.DeserializeObject<List<BasketProduct>>(Request.Cookies["basket"]);
+
+                ViewBag.ProductCount = products.Count;
+            }
+
             Bio bio = _context.Bios.FirstOrDefault();
                 return View(await Task.FromResult(bio));
             
