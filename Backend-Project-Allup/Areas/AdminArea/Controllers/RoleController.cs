@@ -1,5 +1,6 @@
 ﻿using Backend_Project_Allup.Models;
 using Backend_Project_Allup.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,6 +11,8 @@ using System.Threading.Tasks;
 namespace Backend_Project_Allup.Areas.AdminArea.Controllers
 {
     [Area("AdminArea")]
+    [Authorize(Roles = "Admin")]
+
     public class RoleController : Controller
     {
         private readonly UserManager<AppUser> _userManager;

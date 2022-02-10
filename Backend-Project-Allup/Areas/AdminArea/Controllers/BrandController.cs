@@ -1,5 +1,6 @@
 ﻿using Backend_Project_Allup.DAL;
 using Backend_Project_Allup.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,8 @@ using System.Threading.Tasks;
 namespace Backend_Project_Allup.Areas.AdminArea.Controllers
 {
     [Area("AdminArea")]
+    [Authorize(Roles = "Admin")]
+
     public class BrandController : Controller
     {
         private readonly Context _context;
@@ -60,6 +63,77 @@ namespace Backend_Project_Allup.Areas.AdminArea.Controllers
             }
             return NotFound();
         }
+
+
+        public async Task<ActionResult> Edit(int? id)
+        {
+            Brand brand = await _context.Brands.Include(b => b.CategoryBrand).ThenInclude(c => c.Category).FirstOrDefaultAsync(c => c.Id == id);
+            List<CategoryBrand> SubCategory = await _context.CategoryBrands.Include(c => c.Category).Where(x => x.BrandId == brand.Id).ToListAsync();
+            List<Category> AllCategory = await _context.Categories.Include(c => c.CategoryBrand).ThenInclude(c => c.Brand).Where(c => c.IsMain == false).ToListAsync();
+            foreach (var item in SubCategory)
+            {
+                AllCategory.Remove(item.Category);
+
+            }
+            ViewBag.checkCategory = SubCategory;
+            ViewBag.noneCheck = AllCategory;
+            return View(brand);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit(int? id, Brand brand, List<int> subcategory)
+        {
+            bool isExist = _context.Brands.Any(c => c.Name.ToLower() == brand.Name.ToLower().Trim());
+            Brand newBrand = await _context.Brands.FindAsync(id);
+
+            if (isExist && !(newBrand.Name.ToLower() == brand.Name.ToLower().Trim()))
+            {
+                ModelState.AddModelError("Name", $"{newBrand} brand already exists");
+                return RedirectToAction("Edit");
+            }
+
+            if (subcategory.Count() == 0)
+            {
+                ModelState.AddModelError("Name", "Must choose 1 category");
+                return RedirectToAction("Edit");
+            }
+
+            List<int> checkedCategory = _context.CategoryBrands.Where(c => c.BrandId == newBrand.Id).Select(i => i.CategoryId).ToList();
+
+            List<int> addedCategory = subcategory.Except(checkedCategory).ToList();
+            List<int> removedCategory = checkedCategory.Except(subcategory).ToList();
+
+            int addedCategoryLength = addedCategory.Count();
+            int removedCategoryLength = removedCategory.Count();
+            int FullLength = addedCategoryLength + removedCategoryLength;
+
+            newBrand.Name = brand.Name;
+
+            for (int i = 1; i <= FullLength; i++)
+            {
+                if (addedCategoryLength >= i)
+                {
+                    CategoryBrand categoryBrand = new CategoryBrand();
+                    categoryBrand.BrandId = newBrand.Id;
+                    categoryBrand.CategoryId = addedCategory[i - 1];
+                    await _context.CategoryBrands.AddAsync(categoryBrand);
+                    await _context.SaveChangesAsync();
+                }
+
+                if (removedCategoryLength >= i)
+                {
+                    CategoryBrand categoryBrand = await _context.CategoryBrands.FirstOrDefaultAsync(c => c.CategoryId == removedCategory[i - 1] && c.BrandId == newBrand.Id);
+                    _context.CategoryBrands.Remove(categoryBrand);
+                    await _context.SaveChangesAsync();
+                }
+            }
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+
+        }
+
+
         public async Task<ActionResult> Delete(int? id)
         {
             Brand _brand = await _context.Brands.FirstOrDefaultAsync(x => x.Id == id);
@@ -74,15 +148,11 @@ namespace Backend_Project_Allup.Areas.AdminArea.Controllers
             Brand _brand = await _context.Brands.FirstOrDefaultAsync(x => x.Id == brand.Id);
             if (brand == null) return RedirectToAction("Delete");
 
-
             List<CategoryBrand> categoryBrand = await _context.CategoryBrands.ToListAsync();
             foreach (var item in categoryBrand)
             {
-
                 _context.CategoryBrands.Remove(item);
                 await _context.SaveChangesAsync();
-
-
             }
             _context.Brands.Remove(_brand);
             await _context.SaveChangesAsync();

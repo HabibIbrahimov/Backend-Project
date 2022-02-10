@@ -31,16 +31,6 @@ namespace Backend_Project_Allup.Areas.AdminArea.Controllers
         {
             var users = name == null ? _userManager.Users.ToList() :
                  _userManager.Users.Where(u => u.FullName.ToLower().Contains(name.ToLower())).ToList();
-            //List<UserReturnVM> userReturnVM = new List<UserReturnVM>();
-            //foreach (var user in users)
-            //{
-            //    UserReturnVM userReturn = new UserReturnVM();
-            //    userReturn.FullName = user.FullName;
-            //    userReturn.Email = user.Email;
-            //    userReturn.UserName = user.UserName;
-            //    userReturn.Role=(await _userManager.GetRolesAsync(user))[0]
-            //    userReturnVM.Add(userReturn);
-            //}
             return View(users);
         }
         public async Task<IActionResult>Detail(string id)

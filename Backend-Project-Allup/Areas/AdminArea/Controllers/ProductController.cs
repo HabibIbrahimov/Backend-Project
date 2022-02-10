@@ -1,6 +1,7 @@
 ﻿using Backend_Project_Allup.DAL;
 using Backend_Project_Allup.Extensions;
 using Backend_Project_Allup.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,6 +16,7 @@ using System.Threading.Tasks;
 namespace Backend_Project_Allup.Areas.AdminArea.Controllers
 {
     [Area("AdminArea")]
+    [Authorize(Roles = "Admin")]
     public class ProductController : Controller
     {
         private readonly IWebHostEnvironment _env;
