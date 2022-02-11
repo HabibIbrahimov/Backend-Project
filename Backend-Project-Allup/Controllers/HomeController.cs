@@ -25,7 +25,7 @@ namespace Backend_Project_Allup.Controllers
             List<Blog> blogs = _context.Blogs.ToList();
             Subscribe subscribe = _context.Subscribes.FirstOrDefault();
             List<Testimonial> testimonials = _context.Testimonials.ToList();
-            TestimonialDesc testimonialDesc = _context.TestimonialDescs.FirstOrDefault();
+            List<TestimonialDesc> testimonialDescs = _context.TestimonialDescs.ToList();
             List<Service> services = _context.Services.ToList();
             List<Category> categories = _context.Categories.Where(c => c.IsMain == true).ToList();
             HomeVM homeVm = new HomeVM();
@@ -36,7 +36,7 @@ namespace Backend_Project_Allup.Controllers
             homeVm.Blogs = blogs;
             homeVm.Subscribe = subscribe;
             homeVm.Testimonials = testimonials;
-            homeVm.TestimonialDesc = testimonialDesc;
+            homeVm.TestimonialDesc = testimonialDescs;
             homeVm.services = services;
             homeVm.Categories = categories;
             ViewBag.FeatCategories = categories.Where(c => c.IsFeature == true);

@@ -161,13 +161,13 @@
 
                     </li>
                     <li class="nav-item">
-                        <a asp-controller="Slider" asp-action="Index" class="nav-link">
-                            Slider
+                        <a asp-controller="Product" asp-action="Index" class="nav-link">
+                            Products
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a asp-controller="Product" asp-action="Index" class="nav-link">
-                            Products
+                        <a asp-controller="Slider" asp-action="Index" class="nav-link">
+                            Slider
                         </a>
                     </li>
                     <li class="nav-item">
@@ -303,6 +303,8 @@
     @RenderSection("Scripts", false)
     @RenderSection("Css", false)
     @RenderSection("CategoryScript", false)
+    @RenderSection("BrandCreate", false)
+    @RenderSection("ProductCreate", false)
 </body>
 
 </html>

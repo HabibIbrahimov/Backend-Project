@@ -15,7 +15,7 @@ namespace Backend_Project_Allup.ViewModels
         public IEnumerable<Blog> Blogs { get; set; }
         public Subscribe Subscribe { get; set; }
         public List<Testimonial> Testimonials { get; set; }
-        public TestimonialDesc TestimonialDesc { get; set; }
+        public List<TestimonialDesc> TestimonialDesc { get; set; }
         public List<Service> services { get; set; }
         public List<Category> Categories { get; set; }
     }

@@ -2225,32 +2225,40 @@
 
 <!--====== Blog Part Ends ======-->
 <!--====== Testimonial Part Start ======-->
+<section class="testimonial-area bg_cover pt-100 pb-100" style="background-image: url(/assets/images/@Model.Testimonials[0].Image);">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10">
+                <div class="testimonial-active">
+                    @foreach (var item in Model.TestimonialDesc)
+                    {
 
-@foreach (var item in Model.Testimonials)
-{
-    <section class="testimonial-area bg_cover pt-100 pb-100" style="background-image: url(/assets/images/@item.Image);">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-10">
-                    <div class="testimonial-active">
+
+
+
+
                         <div class="single-testimonial d-sm-flex">
                             <div class="testimonial-author">
-                                <img src="assets/images/@Model.TestimonialDesc.AuthorImage" alt="author">
+                                <img src="assets/images/@item.AuthorImage" alt="author">
                             </div>
                             <div class="testimonial-content media-body">
-                                <p> @Model.TestimonialDesc.Text</p>
-                                <h4 class="author-name">@Model.TestimonialDesc.AuthorName</h4>
-                                <span class="designation">@Model.TestimonialDesc.Email</span>
+                                <p> @item.Text</p>
+                                <h4 class="author-name">@item.AuthorName</h4>
+                                <span class="designation">@item.Email</span>
                             </div>
                         </div> <!-- single testimonial -->
 
-                    </div> <!-- testimonial Active -->
-                </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </section>
-}
 
+
+
+
+
+                    }
+                </div> <!-- testimonial Active -->
+            </div>
+            </div> <!-- row -->
+    </div> <!-- container -->
+</section>
 
 <!--====== Testimonial Part Ends ======-->
 <!--====== Newsletter Part Start ======-->
