@@ -12,5 +12,6 @@ namespace Backend_Project_Allup.Models
         [Required, StringLength(maximumLength: 50)]
         public string FullName { get; set; }
         public bool IsActive { get; set; }
+        public List<Sales> Sales { get; set; }
     }
 }

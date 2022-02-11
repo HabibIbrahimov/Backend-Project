@@ -207,3 +207,4 @@ B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\R
 B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Product\Delete.cshtml.g.cs
 B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Brand\Edit.cshtml.g.cs
 B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\Razor\Views\Basket\ShowBasket.cshtml.g.cs
+B:\Asp.Net\Backend-Project-Allup\Backend-Project-Allup\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Sales\Index.cshtml.g.cs

@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Sales>
+@{
+    ViewData["Title"] = "Index";
+}
+<link href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+                <table class="display" id="message">
+                    <thead>
+                        <tr>
+                            <th>FullName</th>
+                            <th>Email</th>
+                            <th>ProductName</th>
+                            <th>Date</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.AppUser.FullName</td>
+                                <td>@item.AppUser.Email</td>
+                                <td>
+                                    @foreach (var salesProduct in item.SalesProducts)
+                                    {
+                                        <p>@salesProduct.Product.Name</p>
+                                    }
+                                </td>
+                                <td>@item.SaleDate.ToString("MM/dd/yyyy HH:mm")</td>
+                                <td>@item.Total</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>

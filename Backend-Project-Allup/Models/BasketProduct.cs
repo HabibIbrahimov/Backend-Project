@@ -10,7 +10,7 @@ namespace Backend_Project_Allup.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public List<ProductPhoto> productPhotos { get; set; }
+        public string Photo  { get; set; }
        
         public double Price { get; set; }
         public double ExTax { get; set; }

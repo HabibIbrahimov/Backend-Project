@@ -4,6 +4,26 @@
     double Total = 0;
 }
 
+<div class="container">
+    <div class="row">
+        @if (TempData["Success"] != null)
+        {
+            <div id="successAlert" class="alert alert-success">@TempData["Success"]</div>
+        }
+
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        @if (TempData["Fail"] != null)
+        {
+            <div id="successAlert" class="alert alert-success">@TempData["Fail"]</div>
+        }
+
+    </div>
+</div>
 
 <div class="container">
     <div class="row">
@@ -27,14 +47,12 @@
                         Total += total;
                         <tr>
                             <th scope="row">
-                                <img width="150px" height="150px" src="~/assets/images/product/@item.productPhotos" />
+                                <img style="width:150px;height:150px" src="~/assets/images/product/@item.Photo" />
                             </th>
                             <td>@item.Name</td>
                             <td>@item.Price</td>
                             <td>@item.Quantity</td>
                             <td>@total</td>
-
-                            <td><a asp-controller="Basket" asp-action="Remove" asp-route-id="@item.Id">X</a></td>
                         </tr>
                     }
                 </tbody>
@@ -47,4 +65,33 @@
             <a asp-controller="Home" asp-action="Index">Got to Home</a>
         }
     </div>
+
+    <div style="" class="row">
+        <form action="Sale" method="post">
+            <button class="btn btn-outline-primary">Buy Now..</button>
+        </form>
+    </div>
 </div>
+
+
+
+
+@section Scripts{
+
+
+    <script>
+        let successAlert = document.getElementById("successAlert");
+        setTimeout(() => {
+            successAlert.remove();
+        }, 3000)
+    </script>
+
+
+    <script>
+        let successAlert = document.getElementById("successAlert");
+        setTimeout(() => {
+            successAlert.remove();
+        }, 2000)
+    </script>
+
+}
