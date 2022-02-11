@@ -17,5 +17,6 @@ namespace Backend_Project_Allup.ViewModels
         public List<Testimonial> Testimonials { get; set; }
         public TestimonialDesc TestimonialDesc { get; set; }
         public List<Service> services { get; set; }
+        public List<Category> Categories { get; set; }
     }
 }

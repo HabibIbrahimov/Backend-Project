@@ -27,6 +27,7 @@ namespace Backend_Project_Allup.Controllers
             List<Testimonial> testimonials = _context.Testimonials.ToList();
             TestimonialDesc testimonialDesc = _context.TestimonialDescs.FirstOrDefault();
             List<Service> services = _context.Services.ToList();
+            List<Category> categories = _context.Categories.Where(c => c.IsMain == true).ToList();
             HomeVM homeVm = new HomeVM();
             homeVm.Sliders = sliders;
             homeVm.SliderDesc = sliderDesc;
@@ -37,6 +38,8 @@ namespace Backend_Project_Allup.Controllers
             homeVm.Testimonials = testimonials;
             homeVm.TestimonialDesc = testimonialDesc;
             homeVm.services = services;
+            homeVm.Categories = categories;
+            ViewBag.FeatCategories = categories.Where(c => c.IsFeature == true);
             return View(homeVm);
         }
     }
