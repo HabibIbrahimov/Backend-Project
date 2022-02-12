@@ -1,6 +1,7 @@
 ﻿using Backend_Project_Allup.DAL;
 using Backend_Project_Allup.Models;
 using Backend_Project_Allup.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace Backend_Project_Allup.Controllers
         }
         public IActionResult Index()
         {
+            HttpContext.Session.SetString("person", "lorem");
             List<Slider> sliders = _context.Sliders.ToList();
             SliderDesc sliderDesc = _context.SliderDescs.FirstOrDefault();
             List<Banner> banners = _context.Banners.ToList();
@@ -41,6 +43,12 @@ namespace Backend_Project_Allup.Controllers
             homeVm.Categories = categories;
             ViewBag.FeatCategories = categories.Where(c => c.IsFeature == true);
             return View(homeVm);
+        }
+
+        public IActionResult GetSession()
+        {
+            string session = HttpContext.Session.GetString("person");
+            return Content(session);
         }
     }
 }
